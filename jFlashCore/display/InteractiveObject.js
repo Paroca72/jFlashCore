@@ -77,6 +77,7 @@
         }
 
         // Capture mouse events
+        // TODO: This generate a visualization bug. The events manager need to be renewed!!! 
         jFlashCore.html.attachEvent(document, "mousemove", function (e) {
             //if (_self.hitTestPoint(_self.mouseX, _self.mouseY, true)) {
             //    if (_self.hasEventListener(jFlashCore.MouseEvent.MOUSE_MOVE)) {
