@@ -78,23 +78,23 @@
 
         // Capture mouse events
         jFlashCore.html.attachEvent(document, "mousemove", function (e) {
-            if (_self.hitTestPoint(_self.mouseX, _self.mouseY, true)) {
-                if (_self.hasEventListener(jFlashCore.MouseEvent.MOUSE_MOVE)) {
-                    _self.dispatchEvent(new jFlashCore.MouseEvent(jFlashCore.MouseEvent.MOUSE_MOVE));
-                }
+            //if (_self.hitTestPoint(_self.mouseX, _self.mouseY, true)) {
+            //    if (_self.hasEventListener(jFlashCore.MouseEvent.MOUSE_MOVE)) {
+            //        _self.dispatchEvent(new jFlashCore.MouseEvent(jFlashCore.MouseEvent.MOUSE_MOVE));
+            //    }
 
-                if (!_mouseInside) {
-                    _self.dispatchEvent(new jFlashCore.MouseEvent(jFlashCore.MouseEvent.MOUSE_OVER));
-                }
+            //    if (!_mouseInside) {
+            //        _self.dispatchEvent(new jFlashCore.MouseEvent(jFlashCore.MouseEvent.MOUSE_OVER));
+            //    }
 
-                _mouseInside = true;
-            } else {
-                if (_mouseInside) {
-                    _self.dispatchEvent(new jFlashCore.MouseEvent(jFlashCore.MouseEvent.MOUSE_OUT));
-                }
+            //    _mouseInside = true;
+            //} else {
+            //    if (_mouseInside) {
+            //        _self.dispatchEvent(new jFlashCore.MouseEvent(jFlashCore.MouseEvent.MOUSE_OUT));
+            //    }
 
-                _mouseInside = false;
-            }
+            //    _mouseInside = false;
+            //}
         });
 
         jFlashCore.html.attachEvent(document, "click", function (e) {
