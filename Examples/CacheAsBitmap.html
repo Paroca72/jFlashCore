@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Untitled Document</title>
+    <script src="../jFlashCore/jFlashCore.js" type="text/javascript"></script>
+</head>
+<body>
+    <script type="text/javascript">
+
+        function createBox() {
+            var mat = new jFlashCore.Matrix();
+            mat.createGradientBox(300, 300, 0, 0, 0);
+
+            var colors = [Math.round(Math.random() * 0xFFFFFF), Math.round(Math.random() * 0xFFFFFF), Math.round(Math.random() * 0xFFFFFF)];
+            var alphas = [1, 1, 1];
+            var ratios = [0, 127, 255];
+
+            var s = new jFlashCore.Sprite();
+            s.cacheAsBitmap = true;
+            s.graphics.beginGradientFill(jFlashCore.GradientType.LINEAR, colors, alphas, ratios, mat, null, null, 0);
+            s.graphics.drawRect(0, 0, Math.round(Math.random() * 25 + 25), Math.round(Math.random() * 25 + 25));
+            s.graphics.endFill();
+            s.x = Math.round(Math.random() * 1000);
+            s.y = Math.round(Math.random() * 500);
+            s.alpha = Math.random();
+            s.rotation = Math.random() * 180;
+            return s;
+        }
+
+        jFlashCore.onready(function () {
+            var stage = new jFlashCore.Stage(1000, 500);
+            for (var i = 0; i < 100; i++) {
+                stage.addChild(createBox());
+            }
+
+            var canvas = stage.getHTMLCanvas();
+            document.body.appendChild(canvas);
+
+            stage.addEventListener(jFlashCore.Event.ENTER_FRAME, function () {
+                for (var i = 0; i < this.numChildren; i++) {
+                    var item = this.getChildAt(i);
+                    item.x += 1 - Math.round(Math.random() * 2);
+                    item.y += 1 - Math.round(Math.random() * 2);
+                    item.rotation += 1;
+
+                    if (item.x < 0) item.x = 0;
+                    if (item.x > 1000 - item.width) item.x = 1000 - item.width;
+
+                    if (item.y < 0) item.y = 0;
+                    if (item.y > 500 - item.height) item.y = 500 - item.height;
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
